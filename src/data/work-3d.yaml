@@ -1,0 +1,312 @@
+# 3D work, shown on /3d. See HOW-TO-UPDATE.md.
+#
+# Each project is one card. "alsoIn" lists extra tabs it appears under.
+# The first file in "media" is the card cover;
+# clicking the card opens all of its files in the viewer.
+# File paths are relative to src/media/ (images) or public/media/ (videos).
+# No client or brand names in titles or captions.
+
+categories:
+  - id: product
+    label: Professional Work
+  - id: characters
+    label: Characters
+  - id: art
+    label: Art
+  - id: motion
+    label: Motion
+
+projects:
+  # ---------- Professional Work ----------
+  - id: shoelace
+    title: Shoelace — product animation
+    category: product
+    alsoIn: [motion]
+    caption: Lace animation and stills, modelled and rendered in Blender.
+    media:
+      - 3d/product/shoe-lace-supply/shoe-lace-render-no-watermark-v2.mp4
+      - 3d/product/shoe-lace-supply/shoe-lace-supply-v-finall.mp4
+      - 3d/product/shoe-lace-supply/shot2.mp4
+      - 3d/product/shoe-lace-supply/dark-bg-final.jpg
+      - 3d/product/shoe-lace-supply/white-pg-shoe-final.jpg
+      - 3d/product/shoe-lace-supply/white-pg-final.jpg
+      - 3d/product/shoe-lace-supply/white-pg-motion-final.jpg
+      - 3d/product/shoe-lace-supply/white-pg-motion-1-final.jpg
+
+  - id: lamp
+    title: Pendant lamp — product animation
+    category: product
+    alsoIn: [motion]
+    caption: Four pendant lamp designs, lit and animated.
+    media:
+      - 3d/product/lamp-animation/finall-looped.mp4
+      - 3d/product/lamp-animation/lamp-animation.mp4
+      - 3d/product/lamp-animation/1.jpg
+      - 3d/product/lamp-animation/2.jpg
+      - 3d/product/lamp-animation/3.jpg
+      - 3d/product/lamp-animation/4.jpg
+
+  - id: soap
+    title: Liquid soap — product spot
+    category: product
+    caption: Short product spot set among flowers.
+    media:
+      - 3d/product/aylux-soap/final-denoise.mp4
+
+  - id: air-purifier
+    title: Air purifier — product launch
+    category: product
+    caption: Launch visuals — hero render, colour range and an interior scene.
+    media:
+      - 3d/product/air-purifier/behance1-02.jpg
+      - 3d/product/air-purifier/0001-0150.mp4
+      - 3d/product/air-purifier/behance1-01.jpg
+      - 3d/product/air-purifier/behance1-03.jpg
+      - 3d/product/air-purifier/behance1-04.jpg
+
+  - id: card-wallet
+    title: Card wallet — product renders
+    category: product
+    caption: Studio renders of a metal card wallet in several finishes.
+    media:
+      - 3d/product/metal-card-wallet/scene-two.jpg
+      - 3d/product/metal-card-wallet/scene-three.jpg
+      - 3d/product/metal-card-wallet/scene-four.jpg
+      - 3d/product/metal-card-wallet/scene-five.jpg
+      - 3d/product/metal-card-wallet/jpg.jpg
+      - 3d/product/metal-card-wallet/collage.jpg
+
+  - id: camera-gear
+    title: Camera gear — product reel
+    category: product
+    caption: Product reel for a camera accessory.
+    media:
+      - 3d/product/dji-gear/final-no-sound.mp4
+
+  - id: perfume
+    title: Perfume — still life
+    category: product
+    caption: Perfume bottle and box on a wooden table.
+    media:
+      - 3d/product/oud-perfume/4-final.jpg
+
+  - id: jet-engine
+    title: Jet engine — technical animation
+    category: product
+    alsoIn: [motion]
+    caption: Aircraft flight shot and engine close-ups.
+    media:
+      - 3d/product/jet-engine/final-close-up.mp4
+
+  - id: snack-ad
+    title: Snack packaging — ad
+    category: product
+    caption: Vertical ad for a snack pack.
+    media:
+      - 3d/product/hanif-falafel/v-1.mp4
+
+  - id: qr-ad
+    title: Food packaging — QR ad
+    category: product
+    caption: Food packaging ad that ends on a QR code.
+    media:
+      - 3d/product/qr-food-ad/qr-code.mp4
+
+  - id: gift-box
+    title: Gift box — product shot
+    category: product
+    caption: Football gift box set on grass.
+    media:
+      - 3d/product/football-box/final-5-edites.jpg
+
+  - id: donut
+    title: Donut — chocolate drip
+    category: product
+    caption: Chocolate running over a donut.
+    media:
+      - 3d/product/donut/donut-final.jpg
+
+  - id: chess
+    title: Chess — low-key study
+    category: product
+    caption: Lighting study with a single hard key light.
+    media:
+      - 3d/product/chess/low-key-with-only-keylight-harsh-shadows.jpg
+
+  # ---------- Characters (original first, then fan art) ----------
+  - id: blue-hair
+    title: Blue-haired character — stylized bust
+    category: characters
+    caption: Stylized bust, sculpted and rendered in Blender.
+    media:
+      - 3d/characters/blue-hair-guy/stylish-render-turn-table.mp4
+      - 3d/characters/blue-hair-guy/stylish-render-1.jpg
+
+  - id: cloud-man
+    title: Cloud man — stylized character
+    category: characters
+    caption: Stylized character with a cloud for a head.
+    media:
+      - 3d/characters/stylized-sculpts/cloudy-man-final.jpg
+
+  - id: big-man
+    title: Big man — stylized portrait
+    category: characters
+    caption: Stylized sculpt in a patterned shirt.
+    media:
+      - 3d/characters/stylized-sculpts/b-n-big-man-stidou-finsish.jpg
+
+  - id: graduate
+    title: Graduate — cartoon character
+    category: characters
+    caption: Cartoon character in a graduation cap.
+    media:
+      - 3d/characters/stylized-sculpts/hassin-abdallah.jpg
+
+  - id: heat-man
+    title: Heat man — character animation
+    category: characters
+    caption: Short character animation.
+    media:
+      - 3d/characters/heat-man/heat-man-final.mp4
+
+  - id: zuko
+    title: Zuko — fan art
+    category: characters
+    fanArt: true
+    caption: Fan art. A stylized take on a fire-bending character.
+    media:
+      - 3d/characters/zuko/zuko-square.mp4
+      - 3d/characters/zuko/zuko-reals.mp4
+      - 3d/characters/zuko/zuko-wide-2.jpg
+      - 3d/characters/zuko/zuko-wide.jpg
+      - 3d/characters/zuko/zuko-wide-1.jpg
+      - 3d/characters/zuko/one.jpg
+
+  - id: owl
+    title: Owl mascot — fan art
+    category: characters
+    fanArt: true
+    caption: Fan art. Looping owl animation.
+    media:
+      - 3d/characters/duolingo/duo-final-loop.mp4
+
+  - id: pizza-steve
+    title: Pizza Steve — fan art
+    category: characters
+    fanArt: true
+    caption: Fan art.
+    media:
+      - 3d/characters/stylized-sculpts/pizza-steave.jpg
+
+  - id: uncle-grandpa
+    title: Uncle Grandpa — fan art
+    category: characters
+    fanArt: true
+    caption: Fan art.
+    media:
+      - 3d/characters/stylized-sculpts/b-n-uncle-grandpa1.jpg
+
+  - id: cheese
+    title: Cheese character — fan art
+    category: characters
+    fanArt: true
+    caption: Fan art. A cheese character in the desert.
+    media:
+      - 3d/characters/stylized-sculpts/cheese-mann.jpg
+
+  - id: angry-orange
+    title: Angry orange character — fan art
+    category: characters
+    fanArt: true
+    caption: Fan art.
+    media:
+      - 3d/characters/stylized-sculpts/untitled.jpg
+
+  # ---------- Art ----------
+  - id: ocean-popsicle
+    title: Ocean popsicle
+    category: art
+    caption: Surreal popsicle with the sea inside it.
+    media:
+      - 3d/art/surreal/ice-cream-iocean-v-1-square.jpg
+      - 3d/art/surreal/ice-cream-with-soldify.jpg
+
+  - id: pineapple
+    title: Pineapple blast
+    category: art
+    caption: A pineapple split by a burst of fire.
+    media:
+      - 3d/art/surreal/pinaple.jpg
+
+  - id: hook
+    title: Skull on a hook
+    category: art
+    caption: Underwater scene with a skull caught on a fishing hook.
+    media:
+      - 3d/art/surreal/ring-in-the-ocean.jpg
+
+  - id: hand-sword
+    title: Hand and sword
+    category: art
+    caption: Entry for a monthly community render challenge.
+    media:
+      - 3d/art/surreal/reddit-june-comtetion-hand.jpg
+
+  - id: void-shoe
+    title: Shoe in the void
+    category: art
+    caption: Concept shoe among floating spheres.
+    media:
+      - 3d/art/surreal/shoe-3-final.jpg
+
+  - id: signpost
+    title: Signpost
+    category: art
+    caption: Tied wooden boards with hand-drawn art, sprouting leaves.
+    media:
+      - 3d/art/surreal/bc85b8128567673-6158d9dbd2cee.jpg
+
+  - id: microscopic
+    title: Microscopic
+    category: art
+    caption: Soft pink creature, as if seen under a microscope.
+    media:
+      - 3d/art/surreal/microscopic-v1.jpg
+
+  - id: egypt
+    title: Egypt — phone wallpaper
+    category: art
+    caption: Illustrated phone wallpaper on a paper texture.
+    media:
+      - 3d/art/illustration/egy-phone-bg-updated.jpg
+
+  - id: lab-illustration
+    title: Lab to phone — illustration
+    category: art
+    caption: Wide illustration with lab glassware, soap and a phone.
+    media:
+      - 3d/art/illustration/phone-final.jpg
+
+  - id: fish
+    title: Deep-sea fish
+    category: art
+    caption: Small fish among corals.
+    media:
+      - 3d/art/surreal/nhfgndf.jpg
+
+  # ---------- Motion ----------
+  - id: medical
+    title: Medical procedure — explainer animation
+    category: motion
+    caption: Cutaway of skin and fat layers for a medical explainer.
+    media:
+      - 3d/motion/medical-animation/0001-0250.mp4
+
+  - id: logo-reveal
+    title: Logo animation — sparkle reveal
+    category: motion
+    caption: Logo reveal in vertical and wide formats.
+    media:
+      - 3d/motion/logo-7/7min-logo-animation-prob4.mp4
+      - 3d/motion/logo-7/7min-logo-animation.mp4

@@ -1,0 +1,97 @@
+---
+// Image or looping video with a caption, used in case studies.
+// Videos play muted while on screen; clicking opens the viewer.
+import { Picture } from 'astro:assets';
+import type { Media } from '../lib/media';
+import { posterUrl, widthsFor } from '../lib/media';
+
+interface Props {
+	m: Media;
+	group: string;
+	index: number;
+	href: string;
+	sizes?: string;
+	eager?: boolean;
+}
+const { m, group, index, href, sizes = '(min-width: 900px) 45vw, 100vw', eager = false } = Astro.props;
+const poster = m.type === 'video' ? await posterUrl(m.image, 1000) : undefined;
+---
+
+<figure class="fig reveal">
+	<a class="hit" href={href} data-lb-group={group} data-lb-index={index}>
+		<div class="media" style={`aspect-ratio: ${m.width} / ${m.height}`}>
+			{
+				m.type === 'video' ? (
+					<video data-src={m.loop} poster={poster} muted loop playsinline preload="none" aria-label={m.alt} />
+				) : (
+					<Picture
+						src={m.image}
+						formats={['avif', 'webp']}
+						widths={widthsFor(m.image, [400, 800, 1200])}
+						sizes={sizes}
+						alt={m.alt}
+						loading={eager ? 'eager' : 'lazy'}
+						decoding="async"
+					/>
+				)
+			}
+		</div>
+		<span class="sr-only">Open in viewer</span>
+	</a>
+	{m.caption && <figcaption>{m.caption}</figcaption>}
+</figure>
+
+<style>
+	.fig {
+		margin: 0 0 var(--gap, 28px);
+		break-inside: avoid;
+	}
+	.hit {
+		display: block;
+		border-radius: 6px;
+		cursor: zoom-in;
+	}
+	.media {
+		position: relative;
+		overflow: hidden;
+		border-radius: 6px;
+		background: var(--soft);
+		transition: border-radius 250ms var(--ease);
+	}
+	.hit:hover .media {
+		border-radius: 14px;
+	}
+	.media :global(img),
+	.media video {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	figcaption {
+		margin-top: 10px;
+		font-size: 14px;
+		color: var(--muted);
+	}
+</style>
+
+<script>
+	const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const vids = document.querySelectorAll<HTMLVideoElement>('.fig video[data-src]');
+	if (!reduced && 'IntersectionObserver' in window) {
+		const io = new IntersectionObserver(
+			(entries) => {
+				for (const e of entries) {
+					const v = e.target as HTMLVideoElement;
+					if (e.isIntersecting) {
+						if (!v.src) v.src = v.dataset.src!;
+						v.play().catch(() => {});
+					} else v.pause();
+				}
+			},
+			{ rootMargin: '100px 0px' },
+		);
+		vids.forEach((v) => io.observe(v));
+	}
+</script>

@@ -1,0 +1,184 @@
+# Engineering case studies, shown on /engineering and /engineering/<id>.
+# See HOW-TO-UPDATE.md. File paths are relative to src/media/ (images)
+# or public/media/ (videos).
+
+studies:
+  - id: robot
+    title: Self-balancing two-wheel robot
+    org: Independent project
+    place: Abdullah Gül University
+    period: 2024 – 2025
+    role: Solo build — chassis, electronics, firmware
+    summary: >-
+      A two-wheel robot that balances itself with only an IMU. I designed and
+      printed the chassis, wired it by hand and wrote all the firmware.
+    cover: engineering/robot/push.mp4
+    tools: [Blender, FDM 3D printing, Arduino C, Cascaded PID, MPU6050, Bluetooth]
+    problem: >-
+      Build a two-wheel robot that stays upright on its own and drives forward
+      and back, with no wheel encoders and no optical sensors — only an
+      MPU6050 IMU.
+    did:
+      - Designed the chassis in Blender, 3D printed it, wired the electronics by hand, and wrote the full firmware in Arduino C.
+      - Implemented a cascaded PID controller — an inner tilt-angle loop for balance and an outer velocity-feedback loop for controlled forward and backward movement.
+      - Estimated tilt with a complementary filter on the MPU6050 readings.
+      - Fixed I2C bus corruption from motor EMI with isolated power domains, twisted-pair wiring and a firmware bus-reset timeout.
+      - Made all PID parameters tunable live over Bluetooth, without reflashing, and logged telemetry to a live dashboard.
+    result: >-
+      Stable balance within ±0.5° of the setpoint, using only the IMU and a
+      complementary filter.
+    sections:
+      - heading: The robot
+        media:
+          - file: engineering/robot/push.mp4
+            caption: Holding balance while being pushed by hand.
+          - file: engineering/robot/walk.mp4
+            caption: Driving forward under the outer velocity loop.
+          - file: engineering/robot/showreel.mp4
+            caption: Project overview.
+      - heading: Chassis
+        text: Modelled in Blender and 3D printed.
+        media:
+          - file: engineering/robot/turntable.mp4
+            caption: Chassis model.
+          - file: engineering/robot/robot-desk.jpg
+            caption: On the bench, connected for tuning.
+      - heading: Telemetry
+        text: >-
+          Tilt angle, PID terms and motor output are streamed from the robot
+          and plotted live while tuning.
+        media:
+          - file: engineering/robot/dash.mp4
+            caption: Live dashboard next to the real robot.
+          - file: engineering/robot/full-telemetry-report.jpg
+            caption: "Full run: IMU angle vs target, PID components and motor command."
+          - file: engineering/robot/70sec-telemetry-report.jpg
+            caption: 70-second window of the same signals.
+          - file: engineering/robot/20sec-telemetry-report.jpg
+            caption: 20-second window.
+
+  - id: mtm
+    title: Wearable medical device housings
+    org: MTM Biotechnology
+    place: Erciyes Teknopark, Kayseri
+    period: Jun – Aug 2025
+    role: Mechanical Design Intern — sole mechanical designer
+    summary: >-
+      Housings for three wearable medical devices: an EEG headband, an EMG
+      muscle sensor and a smart earbud.
+    cover: engineering/mtm/mtm-05-headband-final-render.jpg
+    tools: [SolidWorks, Blender, Photorealistic rendering, Design for 3D printing]
+    problem: >-
+      Three wearable devices needed housings at the same time, and I was the
+      only mechanical designer. One project arrived as a verbal description,
+      with no sketches or CAD reference.
+    did:
+      - Produced the 3D models and the internal component layout for each device.
+      - Iterated the enclosure geometry to keep the sensors in contact with the skin while keeping the parts compact and 3D-print-ready.
+      - Coordinated dimensions with the electronics engineer on each device.
+      - Made photorealistic renders so the team could review and decide before printing.
+    result: >-
+      Complete models, layouts and renders for all three devices, delivered
+      for stakeholder review.
+    sections:
+      - heading: EEG headband
+        text: From the company's original CAD to a final housing.
+        media:
+          - file: engineering/mtm/mtm-01-headband-original-company-cad.jpg
+            caption: "Starting point: the company's original CAD."
+          - file: engineering/mtm/mtm-02-headband-section-battery-under-pcb.jpg
+            caption: "Section: battery placed under the PCB."
+          - file: engineering/mtm/mtm-03-headband-friction-fit-closeup.jpg
+            caption: Friction-fit closure, close-up.
+          - file: engineering/mtm/mtm-04-headband-exploded.jpg
+            caption: Exploded view.
+          - file: engineering/mtm/mtm-05-headband-final-render.jpg
+            caption: Final render.
+      - heading: EMG muscle sensor
+        media:
+          - file: engineering/mtm/mtm-06-emg-first-version.jpg
+            caption: First version.
+          - file: engineering/mtm/mtm-07-emg-final-render.jpg
+            caption: Final render.
+      - heading: Smart earbud
+        media:
+          - file: engineering/mtm/mtm-08-earbud-first-concept.jpg
+            caption: First concept.
+          - file: engineering/mtm/mtm-09-earbud-final-render.jpg
+            caption: Final render.
+
+  - id: masswell
+    title: Printed enclosures for a forklift battery
+    org: Masswell Advanced Energy Systems
+    place: Erciyes Teknopark, Kayseri
+    period: Aug – Sep 2025
+    role: Mechanical Design Intern
+    summary: >-
+      Five 3D-printed enclosure parts for a lithium-ion forklift battery,
+      shipped inside a battery delivered to a client.
+    cover: engineering/masswell/masswell-08-bms-closed-installed.jpg
+    tools: [SolidWorks, FDM 3D printing, PLA, Heat-set inserts]
+    problem: >-
+      A lithium-ion forklift battery needed five enclosure parts: a BMS
+      housing, a fire safety holder, a power supply container, a resistor case
+      and a screen mount.
+    did:
+      - Built all models in SolidWorks from physical measurements.
+      - Printed them in-house in PLA and re-tuned tolerances when parts failed.
+      - When the mounting columns fractured, applied FDM anisotropy principles — reoriented the print axis and added fillets at the stress concentration points — fixing the failure without adding material.
+    result: All five components shipped inside a battery delivered to a client.
+    sections:
+      - heading: Failure and fix
+        text: >-
+          The first mounting columns snapped at the base. FDM parts are weakest
+          between layers, so the fix was geometry and print orientation, not
+          more material.
+        media:
+          - file: engineering/masswell/masswell-01-column-broken-v1.jpg
+            caption: "v1: column broken at the base."
+          - file: engineering/masswell/masswell-02-column-no-fillet-v1.jpg
+            caption: "v1: no fillet where the column meets the base."
+          - file: engineering/masswell/masswell-03-column-with-fillet-v2.jpg
+            caption: "v2: fillet added at the stress concentration."
+      - heading: BMS housing
+        media:
+          - file: engineering/masswell/masswell-04-bms-base-columns.jpg
+            caption: Base with mounting columns.
+          - file: engineering/masswell/masswell-05-bms-board-mounted.jpg
+            caption: BMS board mounted.
+          - file: engineering/masswell/masswell-06-bms-cover-logo.jpg
+            caption: Cover.
+          - file: engineering/masswell/masswell-07-bms-installed-harness.jpg
+            caption: Installed in the battery with its harness.
+          - file: engineering/masswell/masswell-08-bms-closed-installed.jpg
+            caption: Closed and installed.
+      - heading: Power supply container and fire safety holder
+        media:
+          - file: engineering/masswell/masswell-09-power-supply-container.jpg
+            caption: Power supply container.
+          - file: engineering/masswell/masswell-10-fire-holder-installed.jpg
+            caption: Fire safety holder, installed.
+          - file: engineering/masswell/masswell-11-fire-holder-top.jpg
+            caption: Fire safety holder, top view.
+      - heading: Screen mount
+        media:
+          - file: engineering/masswell/masswell-20-report-screen-case-iterations.jpg
+            caption: Screen case iterations.
+          - file: engineering/masswell/masswell-15-iterations-on-desk.jpg
+            caption: Printed iterations on the desk.
+          - file: engineering/masswell/masswell-12-screen-frame-heatset-inserts.jpg
+            caption: Screen frame with heat-set inserts.
+          - file: engineering/masswell/masswell-13-screen-case-pcb-inside.jpg
+            caption: Screen PCB inside the case.
+          - file: engineering/masswell/masswell-14-screen-case-in-hand.jpg
+            caption: Assembled screen case.
+          - file: engineering/masswell/masswell-16-screen-case-final.jpg
+            caption: Final screen case.
+          - file: engineering/masswell/masswell-17-screen-case-final-side.jpg
+            caption: Final screen case, side.
+      - heading: In the battery
+        media:
+          - file: engineering/masswell/masswell-18-battery-interior-full.jpg
+            caption: Battery interior with the printed parts installed.
+          - file: engineering/masswell/masswell-19-battery-interior-angle.jpg
+            caption: Battery interior, another angle.

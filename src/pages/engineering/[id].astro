@@ -1,0 +1,189 @@
+---
+import Base from '../../layouts/Base.astro';
+import Figure from '../../components/Figure.astro';
+import { caseStudies, type CaseStudy } from '../../lib/data';
+import { lightboxItem, media } from '../../lib/media';
+
+export function getStaticPaths() {
+	return caseStudies.map((s, i) => ({
+		params: { id: s.id },
+		props: { s, next: caseStudies[(i + 1) % caseStudies.length] },
+	}));
+}
+
+const { s, next } = Astro.props as { s: CaseStudy; next: CaseStudy };
+
+// Number every figure on the page so the viewer can step through all of them.
+let n = 0;
+const sections = s.sections.map((sec) => ({
+	...sec,
+	figs: sec.media.map((ref) => ({ m: media(ref, s.title), index: n++ })),
+}));
+const all = sections.flatMap((sec) => sec.figs.map((f) => f.m));
+const items = await Promise.all(all.map(lightboxItem));
+const cover = media(s.cover, s.title);
+---
+
+<Base title={s.title} description={s.summary} image={cover.image} lightbox={{ [s.id]: items }}>
+	<article class="section top">
+		<div class="wrap">
+			<p class="eyebrow"><a href="/engineering">Engineering</a> / {s.org}</p>
+			<h1>{s.title}</h1>
+			<p class="lede">{s.summary}</p>
+
+			<dl class="facts">
+				<div><dt>Organisation</dt><dd>{s.org}{s.place && <><br />{s.place}</>}</dd></div>
+				<div><dt>Period</dt><dd>{s.period}</dd></div>
+				<div><dt>Role</dt><dd>{s.role}</dd></div>
+				<div><dt>Tools</dt><dd>{s.tools.join(', ')}</dd></div>
+			</dl>
+
+			<div class="story">
+				<section class="reveal">
+					<h2>Problem</h2>
+					<p>{s.problem}</p>
+				</section>
+				<section class="reveal">
+					<h2>What I did</h2>
+					<ul>{s.did.map((d) => <li>{d}</li>)}</ul>
+				</section>
+				<section class="reveal">
+					<h2>Result</h2>
+					<p>{s.result}</p>
+				</section>
+			</div>
+
+			{
+				sections.map((sec, si) => (
+					<section class="block">
+						<div class="block-head reveal">
+							<h2>{sec.heading}</h2>
+							{sec.text && <p>{sec.text}</p>}
+						</div>
+						<div class={`figs${sec.figs.length === 1 ? ' one' : ''}`}>
+							{sec.figs.map((f) => (
+								<Figure m={f.m} group={s.id} index={f.index} href={items[f.index].src} eager={si === 0 && f.index < 2} />
+							))}
+						</div>
+					</section>
+				))
+			}
+
+			<nav class="next" aria-label="Next case study">
+				<a href={`/engineering/${next.id}`}>
+					<span class="eyebrow">Next case study</span>
+					<span class="next-title">{next.title} →</span>
+				</a>
+			</nav>
+		</div>
+	</article>
+</Base>
+
+<style>
+	.top {
+		padding-top: 48px;
+	}
+	.eyebrow a {
+		color: inherit;
+	}
+	h1 {
+		margin-top: 12px;
+		font-size: clamp(34px, 5.6vw, 64px);
+		letter-spacing: -0.035em;
+		max-width: 18ch;
+	}
+	.lede {
+		margin-top: 20px;
+		max-width: 52ch;
+	}
+	.facts {
+		margin: 48px 0 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 20px 32px;
+		padding: 24px 0;
+		border-top: 1px solid var(--line);
+		border-bottom: 1px solid var(--line);
+		font-size: 15px;
+	}
+	dt {
+		font-size: 13px;
+		color: var(--muted);
+		margin-bottom: 4px;
+	}
+	dd {
+		margin: 0;
+	}
+	.story {
+		margin-top: 56px;
+		display: grid;
+		gap: 40px;
+	}
+	.story h2,
+	.block-head h2 {
+		font-size: 20px;
+		margin-bottom: 12px;
+	}
+	.story p,
+	.story li,
+	.block-head p {
+		color: #2a2a2a;
+		max-width: 62ch;
+	}
+	.story ul {
+		margin: 0;
+		padding-left: 1.1em;
+		display: grid;
+		gap: 8px;
+	}
+	@media (min-width: 1024px) {
+		.story {
+			grid-template-columns: 1fr 1.6fr 1fr;
+			gap: 48px;
+		}
+	}
+	.block {
+		margin-top: 88px;
+	}
+	.block-head {
+		margin-bottom: 28px;
+	}
+	.figs {
+		--gap: 24px;
+		columns: 1;
+		column-gap: var(--gap);
+	}
+	@media (min-width: 700px) {
+		.figs {
+			columns: 2;
+		}
+		.figs.one {
+			columns: 1;
+			max-width: 900px;
+		}
+	}
+	@media (min-width: 1200px) {
+		.figs {
+			--gap: 32px;
+		}
+	}
+	.next {
+		margin-top: 112px;
+		padding-top: 32px;
+		border-top: 1px solid var(--line);
+	}
+	.next a {
+		display: inline-grid;
+		gap: 6px;
+		text-decoration: none;
+	}
+	.next-title {
+		font-size: clamp(22px, 3vw, 32px);
+		font-weight: 600;
+		letter-spacing: -0.02em;
+	}
+	.next a:hover .next-title {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+	}
+</style>

@@ -1,0 +1,84 @@
+# Résumé content for /cv. Keep in step with public/Belal_Abdelkarim_CV.pdf.
+
+headline: Mechanical Engineer · R&D Prototyping · 3D Design & Visualization
+phone: +90 539 272 7057
+
+summary: >-
+  Mechanical Engineering graduate of Abdullah Gül University (2026). Completed
+  two internships at Teknopark startups in Kayseri, designing and delivering
+  real hardware at both. Seven years of professional 3D production in Blender
+  running in parallel — modelling, texturing, animation, rendering. The overlap
+  is deliberate: I design parts, print them, and visualize them.
+
+education:
+  - school: İstanbul Sabahattin Zaim Üniversitesi
+    degree: Master of Science
+    field: Electrical and Electronics Engineering
+    place: İstanbul, Türkiye
+    period: 2026 – present
+  - school: Abdullah Gül University
+    degree: Bachelor of Science
+    field: Mechanical Engineering
+    place: Kayseri, Türkiye
+    period: 2022 – 2026
+
+experience:
+  - org: Masswell Advanced Energy Systems
+    place: Erciyes Teknopark, Kayseri
+    role: Mechanical Design Intern
+    period: Aug – Sep 2025
+    link: /engineering/masswell
+    points:
+      - Designed and 3D printed the full enclosure system for a lithium-ion forklift battery — BMS housing, fire safety holder, power supply container, resistor case, and screen mount
+      - Built all models in SolidWorks from physical measurements; printed in-house in PLA and iterated on tolerances when parts failed
+      - Applied FDM anisotropy principles to fix structural column fractures — reoriented print axis and added fillets at stress concentration points, resolving the failure without adding material
+      - All five components shipped inside a battery delivered to a client
+  - org: MTM Biotechnology
+    place: Erciyes Teknopark, Kayseri
+    role: Mechanical Design Intern
+    period: Jun – Aug 2025
+    link: /engineering/mtm
+    points:
+      - "Only mechanical designer on three concurrent wearable medical device housings: an EEG headband, an EMG muscle sensor, and a smart earbud"
+      - One project arrived as a verbal description with no sketches or CAD reference — produced a complete 3D model, internal component layout, and photorealistic renders for stakeholder review
+      - Iterated on enclosure geometry to maintain sensor contact with skin while keeping parts compact and 3D-print-ready; coordinated dimensions with the electronics engineer on each device
+  - org: Freelance
+    place: Remote
+    role: 3D Artist
+    period: 2017 – Present
+    link: /3d
+    points:
+      - Product visualisation, modelling, texturing, and animation in Blender across seven years of client work
+      - Delivers complete renders from brief to final output — lighting, shading, Cycles rendering, and compositing in DaVinci Resolve and Photoshop
+
+projects:
+  - title: Self-Balancing Two-Wheel Robot
+    period: 2024 – 2025
+    link: /engineering/robot
+    points:
+      - Designed the chassis in Blender, 3D printed it, wired the electronics by hand, and wrote the full firmware in Arduino C — the entire system built alone
+      - "Implemented a cascaded PID architecture: an inner tilt-angle loop for balance and an outer velocity-feedback loop for controlled forward and backward movement"
+      - Achieves stable balance within ±0.5° of setpoint using only an MPU6050 IMU and a complementary filter — no wheel encoders, no optical sensors
+      - Resolved I2C bus corruption from motor EMI through isolated power domains, twisted-pair wiring, and a firmware bus-reset timeout; all PID parameters tunable live over Bluetooth without reflashing
+
+volunteer:
+  - title: English Speaking Club — Host · Kayseri Gençlik Merkezi
+    place: Kayseri, Türkiye
+    period: 2024 – Present
+    points:
+      - Hosted weekly sessions for 8–25 participants over two years; devised topics and created an environment where people felt comfortable making mistakes
+      - Progressed from member to host
+  - title: Board Member · AGÜ International Association (AIA)
+    period: Oct 2024 – Sep 2025
+    points:
+      - Organised events for the international student community at Abdullah Gül University
+
+skills:
+  - group: Mechanical Design
+    items: SolidWorks, FDM 3D printing, Blender, DFM, Heat-set inserts
+  - group: Embedded Systems
+    items: Arduino C/C++, Cascaded PID, Sensor fusion, I2C · Bluetooth serial
+  - group: 3D Production
+    items: Blender, Modelling, Texturing, Animation, Cycles rendering, DaVinci Resolve
+
+languages: Arabic (native), English (advanced)

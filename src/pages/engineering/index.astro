@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/Base.astro';
+import Card from '../../components/Card.astro';
+import { caseStudies } from '../../lib/data';
+import { studyCard } from '../../lib/gallery';
+
+const cards = caseStudies.map((s) => ({ s, c: studyCard(s) }));
+---
+
+<Base
+	title="Engineering"
+	description="Engineering case studies by Belal A. N. Abdelkarim: a self-balancing robot, wearable medical device housings and 3D-printed battery enclosures."
+>
+	<section class="section top">
+		<div class="wrap">
+			<header class="head">
+				<h1>Engineering</h1>
+				<p class="lede">
+					Mechanical design, 3D printing and prototyping — from CAD and first prints to parts that shipped.
+				</p>
+			</header>
+			<div class="grid">
+				{
+					cards.map(({ s, c }, i) => (
+						<Card
+							m={c.cover}
+							title={c.title}
+							caption={c.caption}
+							kicker={`${s.org} · ${s.period}`}
+							href={c.href}
+							eager={i < 3}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.top {
+		padding-top: 56px;
+	}
+	.head {
+		display: grid;
+		gap: 16px;
+		margin-bottom: 48px;
+	}
+	h1 {
+		font-size: clamp(36px, 6vw, 64px);
+		letter-spacing: -0.035em;
+	}
+</style>

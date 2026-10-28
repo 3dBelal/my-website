@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroWall from '../components/HeroWall.astro';
+import Card from '../components/Card.astro';
+import { caseStudies, site, work3d } from '../lib/data';
+import { projectCards, studyCard } from '../lib/gallery';
+
+const projects = work3d.projects.filter((p) => site.featured.includes(p.id));
+const { cards, groups } = await projectCards(projects);
+const featured = site.featured
+	.map((id) => cards.find((c) => c.id === id) ?? caseStudies.filter((s) => s.id === id).map(studyCard)[0])
+	.filter(Boolean);
+---
+
+<Base lightbox={groups}>
+	<HeroWall />
+
+	<section class="section" aria-labelledby="work-h">
+		<div class="wrap">
+			<div class="section-head">
+				<h2 id="work-h">Selected work</h2>
+				<p class="eyebrow">Renders, animation and real hardware</p>
+			</div>
+			<div class="grid">
+				{
+					featured.map((c, i) =>
+						c!.kind === 'eng' ? (
+							<Card m={c!.cover} title={c!.title} caption={c!.caption} kicker={c!.kicker} href={c!.href} eager={i < 3} />
+						) : (
+							<Card
+								m={c!.cover}
+								title={c!.title}
+								caption={c!.caption}
+								kicker={c!.kicker}
+								lbGroup={c!.id}
+								lbCount={c!.count}
+								fallbackHref={c!.fallbackHref}
+								eager={i < 3}
+							/>
+						),
+					)
+				}
+			</div>
+			<div class="more">
+				<a class="btn ghost" href="/3d">All 3D work</a>
+				<a class="btn ghost" href="/engineering">All engineering</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section about" aria-labelledby="about-h">
+		<div class="wrap about-in">
+			<h2 id="about-h" class="reveal">About</h2>
+			<div class="reveal">
+				{
+					site.about.map((p, i) => (
+						<p class={i === 0 ? 'lede' : 'body'}>{p}</p>
+					))
+				}
+				<p class="body"><a class="link-arrow" href="/cv">Read the full CV →</a></p>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.more {
+		margin-top: 16px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+	.about {
+		border-top: 1px solid var(--line);
+	}
+	.about-in {
+		display: grid;
+		gap: 24px;
+	}
+	.about h2 {
+		font-size: clamp(24px, 3vw, 32px);
+	}
+	.body {
+		margin-top: 20px;
+		color: #2a2a2a;
+		max-width: 62ch;
+	}
+	@media (min-width: 900px) {
+		.about-in {
+			grid-template-columns: 1fr 2fr;
+		}
+	}
+</style>

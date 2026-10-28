@@ -1,0 +1,127 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import { work3d } from '../lib/data';
+import { projectCards } from '../lib/gallery';
+
+const { cards, groups } = await projectCards(work3d.projects);
+const tabs = [{ id: 'all', label: 'All' }, ...work3d.categories];
+---
+
+<Base
+	title="3D Work"
+	description="Product renders, character work, art and motion by Belal A. N. Abdelkarim, made in Blender."
+	lightbox={groups}
+>
+	<section class="section top">
+		<div class="wrap">
+			<header class="head">
+				<h1>3D Work</h1>
+				<p class="lede">
+					Product visualisation, characters and personal art. Modelled, textured, lit and rendered in Blender since 2017.
+				</p>
+			</header>
+			<div class="tabs" role="toolbar" aria-label="Filter by category">
+				{
+					tabs.map((t, i) => (
+						<button type="button" data-filter={t.id} aria-pressed={i === 0 ? 'true' : 'false'}>
+							{t.label}
+						</button>
+					))
+				}
+			</div>
+			<div class="grid" id="work">
+				{
+					cards.map((c, i) => (
+						<Card
+							m={c.cover}
+							title={c.title}
+							caption={c.caption}
+							kicker={c.kicker}
+							lbGroup={c.id}
+							lbCount={c.count}
+							fallbackHref={c.fallbackHref}
+							cats={c.cats}
+							eager={i < 3}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.top {
+		padding-top: 56px;
+	}
+	.head {
+		display: grid;
+		gap: 16px;
+		margin-bottom: 40px;
+	}
+	h1 {
+		font-size: clamp(36px, 6vw, 64px);
+		letter-spacing: -0.035em;
+	}
+	.tabs {
+		position: sticky;
+		top: var(--nav-h);
+		z-index: 5;
+		display: flex;
+		gap: 6px;
+		overflow-x: auto;
+		scrollbar-width: none;
+		padding: 12px 0;
+		margin-bottom: 20px;
+		background: var(--bg);
+	}
+	.tabs::-webkit-scrollbar {
+		display: none;
+	}
+	.tabs button {
+		flex: none;
+		font: inherit;
+		font-size: 15px;
+		height: 38px;
+		padding: 0 16px;
+		border-radius: 999px;
+		border: 1px solid var(--line);
+		background: var(--bg);
+		color: var(--muted);
+		cursor: pointer;
+		transition:
+			background 150ms,
+			color 150ms,
+			border-color 150ms;
+	}
+	.tabs button:hover {
+		color: var(--fg);
+		border-color: #cfcfcf;
+	}
+	.tabs button[aria-pressed='true'] {
+		background: var(--fg);
+		border-color: var(--fg);
+		color: var(--bg);
+	}
+</style>
+
+<script>
+	// Category tabs. The choice is kept in the URL hash (e.g. /3d#characters).
+	const buttons = [...document.querySelectorAll<HTMLButtonElement>('.tabs button')];
+	const cards = [...document.querySelectorAll<HTMLElement>('#work .card')];
+
+	function apply(filter: string, updateHash = true) {
+		if (!buttons.some((b) => b.dataset.filter === filter)) filter = 'all';
+		buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === filter)));
+		cards.forEach((c) => {
+			const show = filter === 'all' || c.dataset.cats!.split(' ').includes(filter);
+			c.hidden = !show;
+			if (show) c.querySelector('.reveal')?.classList.add('in');
+		});
+		if (updateHash) history.replaceState(null, '', filter === 'all' ? location.pathname : `#${filter}`);
+	}
+
+	buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.filter!)));
+	if (location.hash) apply(location.hash.slice(1), false);
+</script>

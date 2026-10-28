@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page not found">
+	<section class="section">
+		<div class="wrap nf">
+			<p class="eyebrow">404</p>
+			<h1>This page doesn't exist.</h1>
+			<p class="lede">It may have moved. Try one of these instead.</p>
+			<div class="links">
+				<a class="btn" href="/">Home</a>
+				<a class="btn ghost" href="/3d">3D Work</a>
+				<a class="btn ghost" href="/engineering">Engineering</a>
+				<a class="btn ghost" href="/cv">CV</a>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.nf {
+		min-height: 50vh;
+		display: grid;
+		align-content: center;
+		gap: 16px;
+	}
+	h1 {
+		font-size: clamp(32px, 5vw, 56px);
+		letter-spacing: -0.035em;
+	}
+	.links {
+		margin-top: 16px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+</style>

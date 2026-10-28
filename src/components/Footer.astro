@@ -1,0 +1,96 @@
+---
+import { site } from '../lib/data';
+const year = new Date().getFullYear();
+---
+
+<footer id="contact" class="foot">
+	<div class="wrap">
+		<p class="eyebrow">Contact</p>
+		<h2 class="mail"><a href={`mailto:${site.email}`}>{site.email}</a></h2>
+		<p class="note">
+			Open to engineering roles, master's programs and 3D / visualization projects. Based in {site.location}.
+		</p>
+		<ul class="links">
+			{
+				site.links.map((l) => (
+					<li>
+						<a href={l.url} rel="me noopener" target="_blank">
+							{l.label} <span aria-hidden="true">↗</span>
+							<span class="sr-only">(opens in a new tab)</span>
+						</a>
+					</li>
+				))
+			}
+			<li><a href={site.cvPdf} download>Download CV (PDF)</a></li>
+		</ul>
+		<div class="base">
+			<span>© {year} {site.name}</span>
+			<span>
+				Built on
+				<a href="https://github.com/rockem/astro-photography-portfolio" rel="noopener" target="_blank">
+					astro-photography-portfolio
+				</a>
+			</span>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.foot {
+		border-top: 1px solid var(--line);
+		padding: 72px 0 32px;
+	}
+	@media (min-width: 768px) {
+		.foot {
+			padding: 112px 0 40px;
+		}
+	}
+	.mail {
+		margin-top: 12px;
+		font-size: clamp(26px, 5.4vw, 56px);
+		letter-spacing: -0.03em;
+		overflow-wrap: anywhere;
+	}
+	.mail a {
+		text-decoration: none;
+		background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+		transition: background-size 300ms var(--ease);
+	}
+	.mail a:hover {
+		background-size: 100% 1px;
+	}
+	.note {
+		margin-top: 16px;
+		color: var(--muted);
+		max-width: 52ch;
+	}
+	.links {
+		list-style: none;
+		padding: 0;
+		margin: 32px 0 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px 28px;
+	}
+	.links a {
+		text-decoration: none;
+		border-bottom: 1px solid var(--line);
+		padding-bottom: 2px;
+		transition: border-color 150ms;
+	}
+	.links a:hover {
+		border-color: var(--fg);
+	}
+	.base {
+		margin-top: 72px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 8px 24px;
+		font-size: 13px;
+		color: var(--muted);
+	}
+	.base a {
+		color: inherit;
+	}
+</style>

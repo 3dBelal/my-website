@@ -1,0 +1,178 @@
+---
+import { site } from '../lib/data';
+
+const links = [
+	{ href: '/3d', label: '3D Work' },
+	{ href: '/engineering', label: 'Engineering' },
+	{ href: '/cv', label: 'CV' },
+	{ href: '#contact', label: 'Contact' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => href !== '#contact' && (path === href || path.startsWith(href + '/'));
+---
+
+<header class="nav">
+	<div class="wrap nav-in">
+		<a class="brand" href="/">Belal Abdelkarim</a>
+		<nav aria-label="Main">
+			<ul class="links">
+				{
+					links.map((l) => (
+						<li>
+							<a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>
+								{l.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+		<a class="cv-btn" href={site.cvPdf} download>Download CV</a>
+		<details class="menu">
+			<summary aria-label="Open menu"><span></span><span></span></summary>
+			<ul>
+				{
+					links.map((l) => (
+						<li>
+							<a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>
+								{l.label}
+							</a>
+						</li>
+					))
+				}
+				<li><a href={site.cvPdf} download>Download CV (PDF)</a></li>
+			</ul>
+		</details>
+	</div>
+</header>
+
+<style>
+	.nav {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		background: rgb(255 255 255 / 0.92);
+		backdrop-filter: saturate(1.4) blur(10px);
+		-webkit-backdrop-filter: saturate(1.4) blur(10px);
+		border-bottom: 1px solid var(--line);
+	}
+	.nav-in {
+		height: var(--nav-h);
+		display: flex;
+		align-items: center;
+		gap: 28px;
+	}
+	.brand {
+		font-weight: 600;
+		letter-spacing: -0.01em;
+		text-decoration: none;
+		margin-right: auto;
+		font-size: 16px;
+	}
+	.links {
+		display: none;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		gap: 28px;
+		font-size: 15px;
+	}
+	.links a,
+	.menu a {
+		text-decoration: none;
+		color: var(--muted);
+		transition: color 150ms;
+	}
+	.links a:hover,
+	.links a[aria-current='page'],
+	.menu a[aria-current='page'] {
+		color: var(--fg);
+	}
+	.cv-btn {
+		font-size: 14px;
+		font-weight: 500;
+		text-decoration: none;
+		border: 1px solid var(--fg);
+		border-radius: 999px;
+		padding: 7px 14px;
+		white-space: nowrap;
+		transition:
+			background 150ms,
+			color 150ms;
+	}
+	.cv-btn:hover {
+		background: var(--fg);
+		color: var(--bg);
+	}
+	.menu {
+		position: relative;
+		margin-left: -12px;
+	}
+	.menu summary {
+		list-style: none;
+		width: 44px;
+		height: 44px;
+		display: grid;
+		place-content: center;
+		gap: 6px;
+		cursor: pointer;
+	}
+	.menu summary::-webkit-details-marker {
+		display: none;
+	}
+	.menu summary span {
+		display: block;
+		width: 20px;
+		height: 1.5px;
+		background: var(--fg);
+		transition: transform 200ms var(--ease);
+	}
+	.menu[open] summary span:first-child {
+		transform: translateY(3.75px) rotate(45deg);
+	}
+	.menu[open] summary span:last-child {
+		transform: translateY(-3.75px) rotate(-45deg);
+	}
+	.menu ul {
+		position: absolute;
+		right: 0;
+		top: calc(100% + 8px);
+		list-style: none;
+		margin: 0;
+		padding: 8px;
+		min-width: 220px;
+		background: var(--bg);
+		border: 1px solid var(--line);
+		border-radius: 12px;
+		box-shadow: 0 12px 32px rgb(0 0 0 / 0.08);
+	}
+	.menu li a {
+		display: block;
+		padding: 12px 14px;
+		font-size: 16px;
+		border-radius: 8px;
+	}
+	.menu li a:hover {
+		background: var(--soft);
+		color: var(--fg);
+	}
+	@media (min-width: 820px) {
+		.links {
+			display: flex;
+		}
+		.menu {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	// Close the mobile menu after choosing a link or tapping outside it.
+	const menu = document.querySelector<HTMLDetailsElement>('.menu');
+	menu?.addEventListener('click', (e) => {
+		if ((e.target as HTMLElement).closest('a')) menu.open = false;
+	});
+	document.addEventListener('click', (e) => {
+		if (menu?.open && !menu.contains(e.target as Node)) menu.open = false;
+	});
+</script>

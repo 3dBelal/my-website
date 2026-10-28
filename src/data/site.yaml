@@ -1,0 +1,55 @@
+# General site info. See HOW-TO-UPDATE.md.
+
+name: Belal A. N. Abdelkarim
+title: Mechanical Engineer & 3D Artist
+description: >-
+  Portfolio of Belal A. N. Abdelkarim, mechanical engineer and 3D artist.
+  Product renders and animation in Blender, plus engineering work in design,
+  3D printing and prototyping.
+email: 3d.belal@gmail.com
+location: İstanbul, Türkiye
+cvPdf: /Belal_Abdelkarim_CV.pdf
+# Image used when the site is shared on social media (from src/media/)
+ogImage: 3d/product/lamp-animation/2.jpg
+
+links:
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/belal-abdelkarim/
+  - label: ArtStation
+    url: https://www.artstation.com/belalnagah
+  - label: Behance
+    url: https://www.behance.net/belal-3D
+
+# Videos in the moving wall at the top of the home page, left to right.
+# Phones show the first four.
+hero:
+  - 3d/product/aylux-soap/final-denoise.mp4
+  - 3d/product/shoe-lace-supply/shoe-lace-render-no-watermark-v2.mp4
+  - 3d/characters/zuko/zuko-square.mp4
+  - 3d/product/shoe-lace-supply/shot2.mp4
+  - 3d/product/lamp-animation/finall-looped.mp4
+
+# Short "about" text on the home page (one entry per paragraph)
+about:
+  - >-
+    I'm a mechanical engineer (B.Sc., Abdullah Gül University, 2026) and a 3D
+    artist who has worked in Blender since 2017. I design parts, print them,
+    and visualize them.
+  - >-
+    I did two internships at Teknopark startups in Kayseri and delivered real
+    hardware at both: housings for wearable medical devices, and printed
+    enclosure parts that shipped inside a lithium-ion forklift battery. I'm now
+    studying for an M.Sc. in Electrical and Electronics Engineering in İstanbul.
+
+# Projects shown on the home page under "Selected work", in this order.
+# Use ids from work-3d.yaml and engineering.yaml.
+featured:
+  - shoelace
+  - robot
+  - lamp
+  - masswell
+  - air-purifier
+  - mtm
+  - blue-hair
+  - ocean-popsicle
+  - soap
