@@ -24,14 +24,14 @@ projects:
     alsoIn: [motion]
     caption: Lace animation and stills, modelled and rendered in Blender.
     media:
-      - 3d/product/shoe-lace-supply/shoe-lace-render-no-watermark-v2.mp4
-      - 3d/product/shoe-lace-supply/shoe-lace-supply-v-finall.mp4
-      - 3d/product/shoe-lace-supply/shot2.mp4
-      - 3d/product/shoe-lace-supply/dark-bg-final.jpg
-      - 3d/product/shoe-lace-supply/white-pg-shoe-final.jpg
-      - 3d/product/shoe-lace-supply/white-pg-final.jpg
-      - 3d/product/shoe-lace-supply/white-pg-motion-final.jpg
-      - 3d/product/shoe-lace-supply/white-pg-motion-1-final.jpg
+      - 3d/product/shoelace/shoe-lace-render-no-watermark-v2.mp4
+      - 3d/product/shoelace/shoelace-v-final.mp4
+      - 3d/product/shoelace/shot2.mp4
+      - 3d/product/shoelace/dark-bg-final.jpg
+      - 3d/product/shoelace/white-pg-shoe-final.jpg
+      - 3d/product/shoelace/white-pg-final.jpg
+      - 3d/product/shoelace/white-pg-motion-final.jpg
+      - 3d/product/shoelace/white-pg-motion-1-final.jpg
 
   - id: lamp
     title: Pendant lamp — product animation
@@ -51,7 +51,7 @@ projects:
     category: product
     caption: Short product spot set among flowers.
     media:
-      - 3d/product/aylux-soap/final-denoise.mp4
+      - 3d/product/liquid-soap/final-denoise.mp4
 
   - id: air-purifier
     title: Air purifier — product launch
@@ -81,14 +81,14 @@ projects:
     category: product
     caption: Product reel for a camera accessory.
     media:
-      - 3d/product/dji-gear/final-no-sound.mp4
+      - 3d/product/camera-gear/final-no-sound.mp4
 
   - id: perfume
     title: Perfume — still life
     category: product
     caption: Perfume bottle and box on a wooden table.
     media:
-      - 3d/product/oud-perfume/4-final.jpg
+      - 3d/product/perfume/4-final.jpg
 
   - id: jet-engine
     title: Jet engine — technical animation
@@ -103,7 +103,7 @@ projects:
     category: product
     caption: Vertical ad for a snack pack.
     media:
-      - 3d/product/hanif-falafel/v-1.mp4
+      - 3d/product/snack-ad/v-1.mp4
 
   - id: qr-ad
     title: Food packaging — QR ad
@@ -189,7 +189,7 @@ projects:
     fanArt: true
     caption: Fan art. Looping owl animation.
     media:
-      - 3d/characters/duolingo/duo-final-loop.mp4
+      - 3d/characters/owl/owl.mp4
 
   - id: pizza-steve
     title: Pizza Steve — fan art

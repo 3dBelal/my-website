@@ -23,10 +23,10 @@ links:
 # Videos in the moving wall at the top of the home page, left to right.
 # Phones show the first four.
 hero:
-  - 3d/product/aylux-soap/final-denoise.mp4
-  - 3d/product/shoe-lace-supply/shoe-lace-render-no-watermark-v2.mp4
+  - 3d/product/liquid-soap/final-denoise.mp4
+  - 3d/product/shoelace/shoe-lace-render-no-watermark-v2.mp4
   - 3d/characters/zuko/zuko-square.mp4
-  - 3d/product/shoe-lace-supply/shot2.mp4
+  - 3d/product/shoelace/shot2.mp4
   - 3d/product/lamp-animation/finall-looped.mp4
 
 # Short "about" text on the home page (one entry per paragraph)
