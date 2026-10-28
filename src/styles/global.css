@@ -192,20 +192,22 @@ p {
 	}
 }
 
-/* Masonry gallery grid used by Card.astro */
+/* Gallery grid used by Card.astro (row order, uniform tiles) */
 .grid {
 	--gap: 28px;
-	column-gap: var(--gap);
-	columns: 1;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 40px var(--gap);
 }
 @media (min-width: 560px) {
 	.grid {
-		columns: 2;
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 @media (min-width: 1024px) {
 	.grid {
 		--gap: 36px;
-		columns: 3;
+		grid-template-columns: repeat(3, 1fr);
+		row-gap: 48px;
 	}
 }

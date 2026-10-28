@@ -150,15 +150,16 @@ const cover = media(s.cover, s.title);
 	}
 	.figs {
 		--gap: 24px;
-		columns: 1;
-		column-gap: var(--gap);
+		display: grid;
+		gap: 32px var(--gap);
+		align-items: start;
 	}
 	@media (min-width: 700px) {
 		.figs {
-			columns: 2;
+			grid-template-columns: repeat(2, 1fr);
 		}
 		.figs.one {
-			columns: 1;
+			grid-template-columns: 1fr;
 			max-width: 900px;
 		}
 	}

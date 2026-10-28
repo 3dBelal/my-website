@@ -60,7 +60,12 @@ const isCurrent = (href: string) => href !== '#contact' && (path === href || pat
 		height: var(--nav-h);
 		display: flex;
 		align-items: center;
-		gap: 28px;
+		gap: 12px;
+	}
+	@media (min-width: 820px) {
+		.nav-in {
+			gap: 28px;
+		}
 	}
 	.brand {
 		font-weight: 600;
@@ -68,6 +73,7 @@ const isCurrent = (href: string) => href !== '#contact' && (path === href || pat
 		text-decoration: none;
 		margin-right: auto;
 		font-size: 16px;
+		white-space: nowrap;
 	}
 	.links {
 		display: none;

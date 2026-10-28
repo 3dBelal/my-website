@@ -32,7 +32,7 @@ const {
 	sizes = '(min-width: 1024px) 33vw, (min-width: 560px) 50vw, 100vw',
 } = Astro.props;
 const link = href ?? fallbackHref ?? '#';
-const label = href ? `${title} — read case study` : `${title} — open viewer`;
+const action = href ? 'Read case study' : 'Open in viewer';
 ---
 
 <article class="card" data-cats={cats.join(' ')}>
@@ -41,9 +41,8 @@ const label = href ? `${title} — read case study` : `${title} — open viewer`
 		href={link}
 		data-lb-group={lbGroup}
 		data-lb-index={lbGroup ? 0 : undefined}
-		aria-label={label}
 	>
-		<div class="media" style={`aspect-ratio: ${m.width} / ${m.height}`}>
+		<div class="media">
 			<Picture
 				src={m.image}
 				formats={['avif', 'webp']}
@@ -65,14 +64,13 @@ const label = href ? `${title} — read case study` : `${title} — open viewer`
 			{kicker && <p class="kicker">{kicker}</p>}
 			<h3>{title}</h3>
 			{caption && <p class="cap">{caption}</p>}
+			<span class="sr-only">{action}</span>
 		</div>
 	</a>
 </article>
 
 <style>
 	.card {
-		break-inside: avoid;
-		margin: 0 0 var(--gap, 32px);
 		transition:
 			opacity 250ms var(--ease),
 			filter 250ms var(--ease);
@@ -91,6 +89,7 @@ const label = href ? `${title} — read case study` : `${title} — open viewer`
 		overflow: hidden;
 		border-radius: 6px;
 		background: var(--soft);
+		aspect-ratio: 4 / 5;
 		transition:
 			transform 250ms var(--ease),
 			border-radius 250ms var(--ease);

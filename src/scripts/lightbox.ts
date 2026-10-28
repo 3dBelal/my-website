@@ -114,10 +114,20 @@ export function initLightbox() {
 		return visible ? media : null;
 	}
 
-	function flipFrom(r: DOMRect, to: { left: number; top: number; width: number; height: number }) {
-		const s = r.width / to.width;
-		return `translate(${r.left - to.left}px, ${r.top - to.top}px) scale(${s}, ${r.height / to.height})`;
+	// Keyframe that makes the viewer frame look exactly like the tile: scaled
+	// to cover the tile's box, centred on it, and clipped to its crop.
+	function flipFrom(r: DOMRect, to: { left: number; top: number; width: number; height: number }): Keyframe {
+		const s = Math.max(r.width / to.width, r.height / to.height);
+		const tx = r.left + r.width / 2 - to.left - (s * to.width) / 2;
+		const ty = r.top + r.height / 2 - to.top - (s * to.height) / 2;
+		const ix = (to.width - r.width / s) / 2;
+		const iy = (to.height - r.height / s) / 2;
+		return {
+			transform: `translate(${tx}px, ${ty}px) scale(${s})`,
+			clipPath: `inset(${iy}px ${ix}px round ${6 / s}px)`,
+		};
 	}
+	const settled: Keyframe = { transform: 'none', clipPath: 'inset(0px 0px round 6px)' };
 
 	function open(g: string, i: number, trigger: HTMLElement) {
 		if (busy || !groups[g]) return;
@@ -136,13 +146,7 @@ export function initLightbox() {
 		busy = true;
 		originMedia.style.visibility = 'hidden';
 		frame
-			.animate(
-				[
-					{ transform: flipFrom(from, to), borderRadius: '6px' },
-					{ transform: 'none', borderRadius: '6px' },
-				],
-				{ duration: DURATION, easing: EASE },
-			)
+			.animate([flipFrom(from, to), settled], { duration: DURATION, easing: EASE })
 			.finished.finally(() => {
 				originMedia.style.visibility = '';
 				busy = false;
@@ -158,7 +162,7 @@ export function initLightbox() {
 		if (origin) {
 			const to = targetRect(items[index]);
 			origin.style.visibility = 'hidden';
-			await frame.animate([{ transform: 'none' }, { transform: flipFrom(origin.getBoundingClientRect(), to) }], {
+			await frame.animate([settled, flipFrom(origin.getBoundingClientRect(), to)], {
 				duration: DURATION - 60,
 				easing: EASE,
 				fill: 'forwards',
