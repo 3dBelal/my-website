@@ -64,8 +64,8 @@ studies:
     period: Jun – Aug 2025
     role: Mechanical Design Intern — sole mechanical designer
     summary: >-
-      Housings for three wearable medical devices: an EEG headband, an EMG
-      muscle sensor and a smart earbud.
+      Housings for three wearable medical devices: a smart headband (stress,
+      temperature and blood pressure), an EMG muscle sensor and a smart earbud.
     cover: engineering/mtm/mtm-05-headband-final-render.jpg
     tools: [SolidWorks, Blender, Photorealistic rendering, Design for 3D printing]
     problem: >-
@@ -81,7 +81,7 @@ studies:
       Complete models, layouts and renders for all three devices, delivered
       for stakeholder review.
     sections:
-      - heading: EEG headband
+      - heading: Smart headband
         text: From the company's original CAD to a final housing.
         media:
           - file: engineering/mtm/mtm-01-headband-original-company-cad.jpg

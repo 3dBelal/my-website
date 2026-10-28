@@ -4,11 +4,13 @@ headline: Mechanical Engineer · R&D Prototyping · 3D Design & Visualization
 phone: +90 539 272 7057
 
 summary: >-
-  Mechanical Engineering graduate of Abdullah Gül University (2026). Completed
-  two internships at Teknopark startups in Kayseri, designing and delivering
-  real hardware at both. Seven years of professional 3D production in Blender
-  running in parallel — modelling, texturing, animation, rendering. The overlap
-  is deliberate: I design parts, print them, and visualize them.
+  Mechanical Engineering graduate from Abdullah Gül University (2026), now
+  pursuing an MSc in Electrical and Electronics Engineering in Istanbul,
+  focused on mechanical design and R&D prototyping. Completed two internships
+  at Teknopark startups in Kayseri, designing and delivering real hardware at
+  both. Seven years of professional 3D production in Blender running in
+  parallel — modelling, texturing, animation, rendering. The overlap is
+  deliberate: I design parts, print them, and visualize them.
 
 education:
   - school: İstanbul Sabahattin Zaim Üniversitesi
@@ -39,7 +41,7 @@ experience:
     period: Jun – Aug 2025
     link: /engineering/mtm
     points:
-      - "Only mechanical designer on three concurrent wearable medical device housings: an EEG headband, an EMG muscle sensor, and a smart earbud"
+      - "Only mechanical designer on three concurrent wearable medical device housings: a smart headband measuring stress, temperature and blood pressure, an EMG muscle sensor, and a smart earbud"
       - One project arrived as a verbal description with no sketches or CAD reference — produced a complete 3D model, internal component layout, and photorealistic renders for stakeholder review
       - Iterated on enclosure geometry to maintain sensor contact with skin while keeping parts compact and 3D-print-ready; coordinated dimensions with the electronics engineer on each device
   - org: Freelance
@@ -52,6 +54,11 @@ experience:
       - Delivers complete renders from brief to final output — lighting, shading, Cycles rendering, and compositing in DaVinci Resolve and Photoshop
 
 projects:
+  - title: Ultrasonic Pulse-Echo NDT Device
+    period: 2026 – Present
+    points:
+      - Developing a low-cost ultrasonic pulse-echo device for non-destructive testing, using 1 MHz ultrasonic transducers in place of an expensive commercial NDT probe
+      - Phase 1 runs on an ESP32 with acrylic as the first test material; FPGA-based acquisition planned for Phase 2
   - title: Self-Balancing Two-Wheel Robot
     period: 2024 – 2025
     link: /engineering/robot
@@ -64,7 +71,7 @@ projects:
 volunteer:
   - title: English Speaking Club — Host · Kayseri Gençlik Merkezi
     place: Kayseri, Türkiye
-    period: 2024 – Present
+    period: 2024 – Jul 2026
     points:
       - Hosted weekly sessions for 8–25 participants over two years; devised topics and created an environment where people felt comfortable making mistakes
       - Progressed from member to host
@@ -77,8 +84,8 @@ skills:
   - group: Mechanical Design
     items: SolidWorks, FDM 3D printing, Blender, DFM, Heat-set inserts
   - group: Embedded Systems
-    items: Arduino C/C++, Cascaded PID, Sensor fusion, I2C · Bluetooth serial
+    items: Arduino C/C++, ESP32, Cascaded PID, Sensor fusion, I2C · Bluetooth serial, Ultrasonic sensing
   - group: 3D Production
     items: Blender, Modelling, Texturing, Animation, Cycles rendering, DaVinci Resolve
 
-languages: Arabic (native), English (advanced)
+languages: Arabic (native), English (advanced), Turkish (basic)
